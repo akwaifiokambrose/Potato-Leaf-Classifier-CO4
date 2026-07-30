@@ -11,11 +11,45 @@ st.write("Upload an image of a potato leaf to detect if it is **Healthy** or sho
 def load_model():
     return tf.keras.models.load_model("models/potato_blight_model.keras")
 
+def validate_image_data(img):
+    img_array = np.array(img.convert("RGB"))
+    image_variance = np.std(img_array)
+    
+    if image_variance < 10.0:
+        return False, "Too uniform. Looks like a solid block of color or computer-generated."
+    
+    R = img_array[:, :, 0].astype(int)
+    G = img_array[:, :, 1].astype(int)
+    B = img_array[:, :, 2].astype(int)
+    
+    total_intensity = R + G + B + 1 
+    green_ratio = G / total_intensity
+    
+    green_pixels = np.sum(green_ratio > 0.35)
+    total_pixels = img_array.shape[0] * img_array.shape[1]
+    green_percentage = (green_pixels / total_pixels) * 100
+    
+    if green_percentage < 5.0:
+        return False, f"Only {green_percentage:.1f}% plant color detected. Please upload a clear leaf."
+        
+    if green_percentage > 90.0:
+        return False, f"{green_percentage:.1f}% green is abnormally high. Looks artificial or heavily filtered."
+        
+    return True, f"Passed data check ({green_percentage:.1f}% natural green detected)."
+
 uploaded_file = st.file_uploader("Choose a potato leaf image...", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
     img = Image.open(uploaded_file)
     st.image(img, caption="Uploaded Leaf Image", width=400)
+    
+    is_valid, message = validate_image_data(img)
+    
+    if not is_valid:
+        st.error(f"🛑 **Validation Failed:** {message}")
+        st.stop() 
+    
+    st.success(f"✅ **Validation Passed:** {message}")
     
     with st.spinner("Waking up the AI and analyzing patterns... (This takes a few seconds on the cloud)"):
         try:
@@ -39,7 +73,7 @@ if uploaded_file is not None:
         
     if confidence < 93.0:
         st.warning(f"⚠️ **Low Confidence Detected ({confidence:.1f}%)**")
-        st.write("This doesn't look like a clear potato leaf. Please ensure you uploaded the correct subject item.")
+        st.write("This passed the color check, but the AI is unsure. Please ensure it's a clear potato leaf.")
     else:
         st.success(f"**Diagnosis: {label}**")
         st.progress(int(confidence), text=f"Confidence Score: {confidence:.1f}%")
