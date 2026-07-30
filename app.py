@@ -37,7 +37,7 @@ if uploaded_file is not None:
             label = "Healthy Potato Leaf 🌿"
             confidence = prob_class_0 * 100
         
-    if confidence < 85.0:
+    if confidence < 93.0:
         st.warning(f"⚠️ **Low Confidence Detected ({confidence:.1f}%)**")
         st.write("This doesn't look like a clear potato leaf. Please ensure you uploaded the correct subject item.")
     else:
