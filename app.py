@@ -32,7 +32,7 @@ def validate_image_data(img):
     if green_percentage < 5.0:
         return False, f"Only {green_percentage:.1f}% plant color detected. Please upload a clear leaf."
         
-    if green_percentage > 90.0:
+    if green_percentage > 98.0:
         return False, f"{green_percentage:.1f}% green is abnormally high. Looks artificial or heavily filtered."
         
     return True, f"Passed data check ({green_percentage:.1f}% natural green detected)."
