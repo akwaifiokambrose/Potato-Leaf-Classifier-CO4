@@ -16,7 +16,7 @@ def validate_image_data(img):
     image_variance = np.std(img_array)
     
     if image_variance < 10.0:
-        return False, "Too uniform. Looks like a solid block of color or computer-generated."
+        return False, "Too uniform. Looks like a solid block of color or computer-generated image."
     
     R = img_array[:, :, 0].astype(int)
     G = img_array[:, :, 1].astype(int)
