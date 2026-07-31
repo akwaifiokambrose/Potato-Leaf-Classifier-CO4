@@ -17,7 +17,7 @@ The application is deployed and currently live on Streamlit Community Cloud:
 
 ##  Local Installation & Setup (Linux / WSL)
 
-Alternatively, if you wish to run this application locally on your own machine, follow these steps. 
+Alternatively, if you wish to run this application locally on your own machine, simply follow these steps. 
 
 ### Prerequisites
 * Python 3.11 (Recommended to match deployment environment)
