@@ -11,7 +11,7 @@ A robust, web-based diagnostic tool built with TensorFlow and Streamlit. This ap
 
 ##  Live Demo
 The application is deployed and currently live on Streamlit Community Cloud: 
-👉 **https://potato-leaf-classifier-co4.streamlit.app/**
+ **https://potato-leaf-classifier-co4.streamlit.app/**
 
 ---
 
