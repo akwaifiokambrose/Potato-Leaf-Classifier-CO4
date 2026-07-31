@@ -7,7 +7,7 @@ A robust, web-based diagnostic tool built with TensorFlow and Streamlit. This ap
 * **Deep Learning Inference:** Powered by a custom-trained Keras model optimized for agricultural image classification.
 * **Defensive Engineering (RGB Data Filter):** Features a pre-prediction validation pipeline that calculates pixel variance and green-channel ratios. This mathematically blocks Out-of-Distribution (OOD) uploads—such as documents, human subjects, or digital green screens—before the AI processes them.
 * **Lazy Loading Optimization:** The heavy AI model is deferred until an image is explicitly uploaded, preventing server timeouts and ensuring instant frontend boot times.
-* **Diagnostic Safety Net:** Enforces a strict 93% confidence threshold to flag uncertain predictions and prevent misdiagnosis on edge-case images.
+* **Diagnostic Safety Net:** Enforces a strict 93% confidence threshold to flag uncertain predictions and prevent misdiagnosis on edge-case images which makes the model more resilient than otherwise.
 
 ##  Live Demo
 The application is deployed and currently live on Streamlit Community Cloud: 
