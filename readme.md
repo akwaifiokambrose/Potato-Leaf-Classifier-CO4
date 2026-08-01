@@ -1,4 +1,4 @@
-# 🥔 Potato Leaf Disease Classifier
+# 🥔 Potato Leaf Disease Classifier GET324 CO4
 
 A robust, web-based diagnostic tool built with TensorFlow and Streamlit. This application utilizes a Convolutional Neural Network (CNN) to accurately classify potato foliage as either **Healthy** or showing signs of **Early Blight**.
 
