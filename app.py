@@ -48,7 +48,7 @@ if uploaded_file is not None:
     
     st.success(f"✅ **Validation Passed:** {message}")
     
-    with st.spinner("Waking up the AI and analyzing patterns... (This takes a few seconds on the cloud)"):
+    with st.spinner("Waking up the model and analyzing patterns... (This may take a few seconds on the cloud)"):
         try:
             model = load_model()
         except Exception as e:
