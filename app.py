@@ -10,7 +10,7 @@ st.write("Upload an image of a potato leaf to detect if it is **Healthy** or sho
 @st.cache_resource
 def load_model():
     return tf.keras.models.load_model("models/potato_blight_model.keras")
-#adding first layer validation to strengthen against Out of Distribution data
+#Adding First Layer Validation to Strengthen Against Out of Distribution Data
 def validate_image_data(img):
     img_array = np.array(img.convert("RGB"))
     image_variance = np.std(img_array)
