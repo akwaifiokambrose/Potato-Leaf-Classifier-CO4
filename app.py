@@ -70,7 +70,7 @@ if uploaded_file is not None:
         
     if confidence < 93.0:
         st.warning(f"⚠️ **Low Confidence Detected ({confidence:.1f}%)**")
-        st.write("This passed the color check, but the AI is unsure. Please ensure it's a clear potato leaf.")
+        st.write("This passed the color check, but the model is unsure. Please ensure it's a clear potato leaf.")
     else:
         st.success(f"**Diagnosis: {label}**")
         st.progress(int(confidence), text=f"Confidence Score: {confidence:.1f}%")
